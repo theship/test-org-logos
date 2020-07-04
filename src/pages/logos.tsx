@@ -12,42 +12,51 @@ export default ({data}) => {
         <p>Get a list of organizations from Airtable</p>
         <img src="https://source.unsplash.com/random/400x200" alt="" />
       </div>
-      { <ul>
+      {
+       <ul>
         {
           // eslint-disable-next-line react/prop-types
-          allAirtableData.map((nodes: { data:
-                                        { org_name: string;
-                                          org_logo: { url: string; };
+          allAirtableData.map((node: {  
+                                        recordId:number;
+                                        data:
+                                        { Org_Name: string;
+                                          Org_Logo: [{ url: string; }];
                                         };
-                                      }) => (
-            <li>
-              {nodes.data.org_name}
+                                      }, i:number ) => (
+            <li key={i}>
+              {node.data.Org_Name} -- {node.recordId}
+              <br></br>
+              {node.data.Org_Logo?.map((Org_Logo: {url:string}) => (
+                            	<span>{Org_Logo.url}</span>
+                            )) }
             </li>
           ))
         }
-    </ul> }
+    </ul>
+   }
+
     </div>
   );
 };
 
 export const query = graphql`
-    query {
-        allAirtable {
-            nodes {
-           recordId
-            data {
-              org_name
-               org_logo {
-                 filename
-                 url
-                 thumbnails {
-                   small {
-                     width
-                   }
-                 }
-               }
+  query {
+    allAirtable (sort: {order: ASC, fields: data___Org_Logo___url}) {
+      nodes {
+      recordId
+      data {
+        Org_Name
+          Org_Logo {
+            filename
+            url
+            thumbnails {
+              small {
+                width
+              }
             }
-            }
-        }
+          }
+      }
+      }
     }
+  }
 `;

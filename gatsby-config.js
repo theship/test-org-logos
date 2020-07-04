@@ -55,18 +55,16 @@ module.exports = {
       resolve: 'gatsby-source-airtable',
       options: {
         apiKey: process.env.AIRTABLE_KEY,
-        // apiKey: 'keyGossVeFU9uJben',
         tables: [
           {
             baseId: process.env.AIRTABLE_BASE_ID,
-            // baseId: 'app56znB40HogXVeJ',
             tableName: 'Orgs',
             tableView: `Grid view`,
             defaultValues: {
               // currently does not accept null / undefined. use empty string instead
               // and perform your conditional logic on name_of_field.length > 0 ? condition_1 : condition_2
               NAME_OF_FIELD_THAT_WILL_OTHERWISE_NOT_BE_RETURNED_IF_ALL_VALUES_ARE_BLANK:
-                "",
+                "blah",
               // ... etc
             },
             mapping: { Image: "fileNode" },

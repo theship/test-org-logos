@@ -7,3 +7,11 @@ require("ts-node").register({ files: true });
 require("dotenv").config({
     path: `.env.${process.env.NODE_ENV}`,
   })
+
+// exports createSchemaCustomization = ({ actions }) =>{
+//   actions.createTypes(`
+//     type Airtable implements Node @infer {
+//       org_logo: AirtableDataOrg_logo
+//     }
+//   `)
+// }
