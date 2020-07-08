@@ -16,7 +16,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Get & Post to Airtable using React Gatsby TypeScript GraphQL`,
+    title: `Get Airtable using React Gatsby TypeScript GraphQL`,
     description: `Simple & sound: the right toolchain to fold in a Rest API into your app.`,
     author: `@theship juleeburdekin.com`,
     apiUrl: process.env.API_URL,
